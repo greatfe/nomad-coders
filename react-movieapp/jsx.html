@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <div id="root"></div>
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script type="text/babel">
+    const root = document.querySelector('#root');
+    const btnTitle = (
+      <h3 id="btn-title" onMouseEnter={() => console.log("mouse enter")}>
+        hello i am h3
+      </h3>
+    );
+    const btn = (
+      <button id="btn" onClick={() => console.log("mouse click")}>
+        click me
+      </button>
+    );
+    const container = Ract.createElement('div', null, [btnTitle, btn]);
+    ReactDOM.render(container, root);
+  </script>
+</body>
+</html>
