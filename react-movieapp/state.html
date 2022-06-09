@@ -26,8 +26,8 @@
             <button onClick={addCount}>click me</button>
         );
         const App = () => {
-            const data = React.useState();
-            console.log(data);
+            const [count, modifier] = React.useState();
+            
             return (
                 <div>
                     <Title />
