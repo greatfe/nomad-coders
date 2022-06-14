@@ -1,18 +1,25 @@
-let toNumber;
-function setToNumber(event) {
-	toNumber = event.target.value;
-	console.log(toNumber);
+let toGenNumber;
+let choseNumber;
+function setToGenNumber(event) {
+	toGenNumber = event.target.value;
 }
 
 function onPlay(event) {
 	event.preventDefault();
-	console.log(event.srcElement[0]);
-	console.log(event.srcElement[0].value);
+
+	const machinNumber = Math.round(Math.random() * toGenNumber);
+	choseNumber = parseInt(event.srcElement[0].value);
+	event.srcElement.childNodes[4].innerText = `You chose: ${choseNumber}, the machine chose: ${machinNumber}`;
+
+	if(choseNumber === machinNumber)
+		event.srcElement.childNodes[6].innerText = 'You win!';
+	else
+		event.srcElement.childNodes[6].innerText = 'You lost!';
 }
 
 function initDisplay() {
 	const body = document.body;
-  const h2 = document.createElement('h2');
+  	const h2 = document.createElement('h2');
 	const inputNumberText = document.createElement('span');
 	const inputNumber = document.createElement('input');
 
@@ -22,9 +29,8 @@ function initDisplay() {
 	body.appendChild(h2);
 	body.appendChild(inputNumberText);
 	body.appendChild(inputNumber);
-	inputNumber.addEventListener('blur', setToNumber);
+	inputNumber.addEventListener('blur', setToGenNumber);
 
-	const br = document.createElement('br');
 	const guessNumberForm = document.createElement('form');
 	const guessNumberText = document.createElement('span');
 	const guessNumber = document.createElement('input');
@@ -45,21 +51,17 @@ function initDisplay() {
 
 	guessNumberForm.addEventListener('submit', onPlay);
 
+	newlineBr(1, guessNumberForm);
+
 	const resultText1 = document.createElement('span');
 	const resultText2 = document.createElement('span');
 
-	resultText1.innerText = "You ";
 	resultText1.id = "result-text1";
-	body.appendChild(resultText1);
-	newlineBr(1, body);
-	resultText2.innerText = "You ";
-	resultText2.id = "result-text2 ";
-	body.appendChild(resultText2);
-
-
+	guessNumberForm.appendChild(resultText1);
+	newlineBr(1, guessNumberForm);
+	resultText2.id = "result-text2";
+	guessNumberForm.appendChild(resultText2);
 }
-
-
 
 function newlineBr(want, element) {
 	for(let i=0 ; i<want ; ++i) {
@@ -67,4 +69,5 @@ function newlineBr(want, element) {
 		element.appendChild(br);
 	}
 }
+
 initDisplay();
