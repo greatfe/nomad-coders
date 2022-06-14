@@ -2,6 +2,7 @@ import Button from "./Button.js";
 import styles from "./App.module.css";
 import { useEffect, useState } from "react";
 
+/*
 function App() {
   const [counter, setValue] = useState(0);
   const [keyword, setKeyword] = useState('');
@@ -28,5 +29,33 @@ function App() {
     </div>
   );
 }
+*/
+
+function Hello() {
+  function bifn() {
+    console.log('say bye~');
+  }
+  function hifn() {
+    console.log('say hi~');
+    return bifn;
+  }
+  useEffect(hifn, []);
+
+  return <h2>Hello</h2>
+}
+
+function App() {
+  const [value, setValue] = useState(false);
+
+  const onClick = () => setValue((prev) => !prev);
+
+  return (
+    <div>
+      {value ? <Hello /> : null}
+      <button onClick={onClick}>{value ? 'change' : 'click'}</button>
+    </div>
+  );
+}
+
 
 export default App;
