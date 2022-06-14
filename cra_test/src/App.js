@@ -4,15 +4,25 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [counter, setValue] = useState(0);
+  const [keyword, setKeyword] = useState('');
+
   const onClick = () => setValue((prev) => prev+1);
+  const onChange = (event) => setKeyword(event.target.value);
   console.log('i run all the time');
-  const iRunOnlyOnce = () => {
-    console.log('i run only once.');
+  const effFuncCounter = () => {
+    console.log('Call The counter....');
   }
-  useEffect(iRunOnlyOnce, []);
+  const effFuncKeyword = () => {
+    if(keyword !== '')
+      console.log('Call The API....');
+  }
+  useEffect(effFuncCounter, []);
+  useEffect(effFuncKeyword, [keyword]);
   return (
     <div>
       <h1 styles={styles.title}>Welcome back! {counter}</h1>
+      <input value={keyword} onChange={onChange} 
+        placeholder="serch hear..."></input>
       <Button text="click me" />
       <button onClick={onClick}>click....</button>
     </div>
