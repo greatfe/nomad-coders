@@ -24,7 +24,9 @@ function paintTodo(objNewTodo) {
   const button = document.createElement('button');
   
   button.addEventListener('click', deleteTodo);
-  button.innerText = 'X';
+  button.className = 'material-icons';
+  button.innerText = 'close';
+  button.style.fontSize = '15px';
 
   span.innerText = objNewTodo.text;
   li.id = objNewTodo.id;

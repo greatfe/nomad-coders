@@ -5,32 +5,46 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/style.css">
-  <title>Document</title>
+  <!-- css reset -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Grape+Nuts&family=Nanum+Gothic:wght@400;700&family=Source+Sans+Pro:wght@600&display=swap">
+  <!-- Icon -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined">
+  <title>ToDoList</title>
 </head>
 <body>
-  <form id="login-form" class="hidden">
-    <input required maxlength="15" type="text" placeholder="What is your name?">
-    <input type="submit" value="Log In">
-  </form>
-  <h1 id="greeting" class="hidden"></h1>
+  <div id="main-contain">
+    <form id="login-form" class="hidden">
+      <input required maxlength="15" type="text" placeholder="What is your name?">
+      <input type="submit" value="Log In">
+    </form>
 
-  <form id="todo-form">
-    <input type="text" placeholder="Write a To Do and Press Enter" required>
-  </form>
-  <ul id="todo-list"></ul>
-  
-  <h2 id="clock">00:00</h2>
-  <div id="quote">
-    <span></span>
-    <span></span>    
+    <div class="todo-contain">
+      <h1 id="greeting" class="hidden"></h1>
+      <form id="todo-form">
+        <input type="text" placeholder="Write a To Do and Press Enter" required>
+      </form>
+      <ul id="todo-list"></ul>
+    </div>
+    
+    <h2 id="clock">00:00</h2>
+    <div id="quote">
+      <span></span>
+      <span></span>
+    </div>
+
+    <div id="weather">
+      <span></span>
+    </div>
+    <script src="./js/greeting.js"></script>
+    <script src="./js/clock.js"></script>
+    <script src="./js/queotes.js"></script>
+    <script src="./js/background.js"></script>
+    <script src="./js/todo.js"></script>
+    <script src="./js/weather.js"></script>
   </div>
-
-  <script src="./js/greeting.js"></script>
-  <script src="./js/clock.js"></script>
-  <script src="./js/queotes.js"></script>
-  <script src="./js/background.js"></script>
-  <script src="./js/todo.js"></script>
-  <script src="./js/weather.js"></script>
 </body>
 </html>
 
