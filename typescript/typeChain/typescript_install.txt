@@ -1,0 +1,15 @@
+
+1. npm init -y
+2. npm install -D typescript
+3. make file tsconfig.json
+4. npm run build
+  modify : package.json
+  "scripts": {
+    "build": "tsc",
+    "start": "node build/index.js"
+  },
+
+5. ts-node 설치
+  npm install -D ts-node
+
+6. npm i nodemon
