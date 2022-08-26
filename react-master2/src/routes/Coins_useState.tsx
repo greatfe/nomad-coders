@@ -1,11 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
 import { useState, useEffect } from "react";
-import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
-import { fetchCoins } from "../api";
-import { isDarkAtom } from "../atoms";
 
 const Container = styled.div`
   padding: 0px 20px;
@@ -36,11 +31,10 @@ const CoinList = styled.ul`
 `;
 
 const Coin = styled.li`
-  background-color: ${props => props.theme.cardBgColor};;
-  color:${props => props.theme.textColor};
+  background-color: white;
+  color:${props => props.theme.bgColor};
   margin-bottom: 10px;
   border-radius: 15px;
-  border: 1px solid white;
   a {
     padding: 20px;
     display: block;
@@ -60,7 +54,7 @@ const Title = styled.h1`
   color: ${props => props.theme.accentColor};
 `;
 
-interface ICoin {
+interface CoinInterface {
   id: string,
   name: string,
   symbol: string,
@@ -71,7 +65,7 @@ interface ICoin {
 }
 
 function Coins() {
-/*   const [coins, setCoins] = useState<CoinInterface[]>([]);
+  const [coins, setCoins] = useState<CoinInterface[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -82,29 +76,18 @@ function Coins() {
       setLoading(false);
     })();
   }, []);
- */
-  const setDarkAtom = useSetRecoilState(isDarkAtom);
-  const toggleDarkAtom = () => setDarkAtom(prev => !prev);
-  const {isLoading, data} = useQuery<ICoin[]>(['allCoins'], fetchCoins);
 
   return (
     <Container>
-      <Helmet>
-        <title>
-          Coins
-        </title>
-      </Helmet>
-
       <Header>
         <Title>Coins</Title>
-        <button onClick={toggleDarkAtom}>Toggle Mode</button>
       </Header>
-      {isLoading ? <Loader>Loading...</Loader>:
+      {loading ? <Loader>Loading...</Loader>:
       (<CoinList>
-        {data?.slice(0, 100).map(coin => 
+        {coins.map(coin => 
           <Coin key={coin.id}>
             <Link to={{
-              pathname: `/${coin.id}/chart`,
+              pathname: `/${coin.id}`,
               state: {name: coin.name},
             }}>
             <CoinLogo 

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@hookform/resolvers": "^2.9.7",
     "@tanstack/react-query": "^4.0.10",
     "@tanstack/react-query-devtools": "^4.0.10",
     "@testing-library/jest-dom": "^5.16.5",
@@ -16,14 +17,17 @@
     "gh-pages": "^4.0.0",
     "react": "^18.2.0",
     "react-apexcharts": "^1.4.0",
+    "react-beautiful-dnd": "^13.1.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
+    "react-hook-form": "^7.34.2",
     "react-router-dom": "^5.3.3",
     "react-scripts": "5.0.1",
     "recoil": "^0.7.5",
     "styled-components": "^5.3.5",
     "typescript": "^4.7.4",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -52,10 +56,24 @@
     ]
   },
   "devDependencies": {
+    "@types/react-beautiful-dnd": "^13.1.2",
     "@types/react-helmet": "^6.1.5",
     "@types/react-query": "^1.2.9",
     "@types/react-router-dom": "^5.3.3",
+    "@types/recoil": "^0.0.9",
     "@types/styled-components": "^5.1.25"
   },
-  "homepage": "https://greatfe.github.io/nomad-react-master"
+  "homepage": "https://greatfe.github.io/nomad-react-master",
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/greatfe/toDoList.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/greatfe/toDoList/issues"
+  }
 }

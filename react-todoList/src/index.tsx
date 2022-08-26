@@ -1,10 +1,9 @@
-import RouterFunc from "./RouterFunc";
-import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { darkTheme, lightTheme } from "./theme";
-import { useRecoilValue } from "recoil";
-import { isDarkAtom } from "./atoms";
-import { Helmet } from "react-helmet";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import { RecoilRoot } from 'recoil';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { darkTheme } from './theme';
 
 const GlobalStyle = createGlobalStyle`
 html, body, div, span, applet, object, iframe,
@@ -54,7 +53,7 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-* {
+* {aaaa
   box-sizing: border-box;
 }
 body {
@@ -70,21 +69,16 @@ a {
 }
 `;
 
-function App() {
-  const isDark = useRecoilValue(isDarkAtom);
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement
+);
 
-  return (
-    <>     
-      <Helmet>
-        <link href = "https://fonts.googleapis.com/css2?family=Grape+Nuts&family=Nanum+Gothic:wght@400;700&family=Source+Sans+Pro:ital,wght@0,400;0,600;1,300&display=swap" />;
-      </Helmet> 
-      <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
-        <GlobalStyle></GlobalStyle>
-        <RouterFunc></RouterFunc>
-        <ReactQueryDevtools initialIsOpen={false}/>
-      </ThemeProvider>
-    </>
-  );
-}
+root.render(
+  <RecoilRoot>
+    <ThemeProvider theme={darkTheme}>
+      <GlobalStyle />
+      <App />
+    </ThemeProvider>
+  </RecoilRoot>
+);
 
-export default App;
