@@ -3,7 +3,7 @@ const API_KEY = "c2fb08cd2af46e82f3f5f33f1d89bff9";
 const BASE_PATH = "https://api.themoviedb.org/3";
 
 export function getMovies() {
-  return fetch(`${BASE_PATH}/movie/now_playing?api_key=${API_KEY}`)
+  return fetch(`${BASE_PATH}/movie/top_rated?api_key=${API_KEY}`)
           .then(resp => resp.json());
 }
 

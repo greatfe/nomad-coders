@@ -1,6 +1,6 @@
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import Header from "./Component/Header";
-import Home from "./Routes/Home";
+import Home from "./Routes/Home_recoil";
 import Search from "./Routes/Search";
 import Tv from "./Routes/Tv";
 

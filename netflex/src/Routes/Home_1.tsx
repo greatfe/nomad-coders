@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import styled from "styled-components";
-import { motion, AnimatePresence, useViewportScroll } from "framer-motion";
+import { motion, AnimatePresence, useViewportScroll, useScroll } from "framer-motion";
 import { getMovies } from "../api";
 import { makeImagePath } from "../util";
 import { useState } from "react";
@@ -186,7 +186,7 @@ const offset = 6;
 function Home() {
   const history = useHistory();
   const bigMovieMatch = useRouteMatch<{ movieId: string }>("/movies/:movieId");
-  const { scrollY } = useViewportScroll();
+  const { scrollY } = useScroll();
   const { data, isLoading } = useQuery<IGetMoviesResult>(
     ["movies", "nowPlaying"],
     getMovies
@@ -272,8 +272,7 @@ function Home() {
                       <BigCover
                         style={{
                           backgroundImage: `linear-gradient(to top, black, transparent), url(${makeImagePath(
-                            clickedMovie.backdrop_path,
-                            "w500"
+                            clickedMovie.poster_path
                           )})`,
                         }}
                       />

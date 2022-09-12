@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { AnimatePresence, motion, useScroll, useViewportScroll } from "framer-motion";
+import { AnimatePresence, motion, useScroll } from "framer-motion";
 import { useState } from "react";
 import { useHistory, useRouteMatch } from "react-router-dom";
 import styled from "styled-components";
@@ -66,7 +66,7 @@ const Row = styled(motion.div)`
 const Box = styled(motion.div)<{bgphoto:string}>`
   background-color: white;
   background-image: url(${props => props.bgphoto});
-  background-size: ;
+  background-size: cover;
   background-position: center center;
   height: 200px;
   font-size: 66px;
@@ -200,7 +200,8 @@ function Home() {
     <Wrapper>
       {isLoading ? <Loader>Loading...</Loader> : (
         <>
-          <Banner onClick={increaseIndex} bgPoster={makeImagePath(data?.results[BannerMovieNum].backdrop_path || "")}>
+          <Banner onClick={increaseIndex} 
+                  bgPoster={makeImagePath(data?.results[BannerMovieNum].backdrop_path || "")}>
             <Title>{data?.results[BannerMovieNum].title}</Title>
             <Overview>{data?.results[BannerMovieNum].overview}</Overview>
           </Banner>
@@ -226,7 +227,7 @@ function Home() {
                       exit="exit"
                       transition={{type:"tween"}}
                       variants={boxVariants}
-                      bgphoto={makeImagePath(movie.backdrop_path || "", "w500")} 
+                      bgphoto={makeImagePath(movie.poster_path || "", "w500")} 
                     >
                       <BoxInfo 
                         variants={boxInfoVariants}
